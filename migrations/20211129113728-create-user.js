@@ -12,13 +12,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       age: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       mailId: {
         type: Sequelize.STRING
       },
       phoneNumber: {
-        type: Sequelize.NUMBER
+        type: Sequelize.BIGINT
       },
       createdAt: {
         allowNull: false,

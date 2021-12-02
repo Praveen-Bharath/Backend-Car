@@ -19,14 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey:true,
       defaultValue: DataTypes.UUIDV4,
     },
-    CarId:{
-      type:DataTypes.INTEGER,
-      foreignKey:true,
-    },
     name: {
       type:DataTypes.STRING,
     },
-    age: DataTypes.INTEGER,
+    age:{
+      type:DataTypes.INTEGER,
+    },
     mailId: {
       type:DataTypes.STRING,
     },
