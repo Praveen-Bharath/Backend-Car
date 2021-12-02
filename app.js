@@ -8,60 +8,22 @@ const cors = require("cors");
 
 app.use(cors({origin:'*'}));
 app.use(express.json());
-/*
-app.get("/users",async(req,res) => { 
-    const users = await User.findAll();
-    return res.status(200).json(users);
-});
 
-app.get("/trips",async(req,res) => { 
-    try{
-        
-    const trips = await Trip.findAll();
-    res.send(trips)
-    res.status(200).json(trips);
-    
-    }
-    catch(e){
-        res.status(500).json({"message":e});
-    }
-});
-
-app.post("/users",async(req,res) => { 
-    const {CarId,name,age,mailId,phoneNumber} = req.body;
-    try{
-    const users = await User.create({CarId,name,age,mailId,phoneNumber});
-    return res.status(200).json(users);
-    }catch(e){
-        return res.status(500).json({"message": e});
-    }
-});
-
-app.post("/trips",async(req,res) => { 
-    const {CarId,From_location,To_location,Date} = req.body;
-    try{
-    const trips = await Trip.create({CarId,From_location,To_location,Date});
-    return res.status(300).json(trips);
-    }catch(e){
-        return res.status(600).json({"message from db": e});
-    }
-});
-*/
 
 app.post("/users", addUser );
 app.get("/users", displayUser);
 app.get("/users/:userid", displayUserbyId);
 app.get("/users/:userid/phonenumber", displayPhoneNumberOfUser);
 //app.get("/users/count", displayTotalUsers);
-app.get("/getting", displayUserTrip);
-app.post("/putting", addTrip );
+app.get("/trips", displayUserTrip);
+app.post("/trips", addTrip );
 
-const PORT =5002
+const PORT =5003
 app.listen({port:PORT},async()=>{
     console.log(`Server started at ${PORT}`)
     try{
         await sequelize.authenticate();
-        await sequelize.sync({force:false});
+        await sequelize.sync({alter:true});
         console.log("Connected");
     }catch(e){
         console.log(e);

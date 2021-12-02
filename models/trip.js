@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const {Sequelize} = require ("../models")
 module.exports = (sequelize, DataTypes) => {
   class Trip extends Model {
     /**
@@ -33,12 +34,21 @@ module.exports = (sequelize, DataTypes) => {
     allowNull:false,
     },
     Date:{
-      type:DataTypes.DATE,
+      type:DataTypes.DATEONLY,
       allowNull:false,
+      defaultValue: sequelize.NOW
+   // type: sequelize.DATEONLY,
+   //allowNull: false,
+   //defaultValue: sequelize.NOW
+   //type: DataTypes.DATE,
+   //allowNull: false,
+  // defaultValue: Sequelize.NOW
+
+   
     },
   }, {
     sequelize,
-    modelName: 'trip',
+    modelName: 'Trip',
   });
   return Trip;
 };
