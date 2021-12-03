@@ -1,7 +1,13 @@
 const {User,Trip,Sequelize} = require("../models")
 const {Op, QueryTypes} = require("sequelize");
 const db = require("../models");
+const user = require("../models/user");
 
+var praveen=[
+    {
+        "email":"abc" , "password":"123"
+    }
+]
 
 //function to add new user
 var addUser = async(req,resp) =>{
@@ -27,6 +33,28 @@ var displayUser = async(req,resp) =>{
     }
 }
 
+/*var logincheck =async(req,resp) =>{
+
+        
+        const users = await praveen.find(user => user.email = req.body.email);
+        if(users){
+            if(user.password== req.body.password)
+            {
+                return resp.status(200).json({"message":"hi praveen"})
+            }
+            else{
+                return resp.status(201).json({"message":"OLUNGA PASSWORD PODRA"})
+
+            }
+            
+        }
+        else{
+            return resp.status(202).json({"message":"YARA NEE"})
+
+        }
+     
+       
+    }*/
 
 //function to display user details using user Id
 var displayUserbyId =  async (req, resp)=> {

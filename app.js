@@ -2,9 +2,11 @@ const express= require("express");
 const {sequelize}=require("./models")
 const {addUser,displayUser,displayUserbyId,displayPhoneNumberOfUser,displayTotalUsers,sqlQuery} = require("./controls/usercontroller");
 const {addTrip,displayUserTrip} = require("./controls/tripcontroller");
+const {addUserVal,getUser,loginconnect} = require("./controls/registercontroller");
 const app= express();
 
 const cors = require("cors");
+
 
 app.use(cors({origin:'*'}));
 app.use(express.json());
@@ -17,6 +19,12 @@ app.get("/users/:userid/phonenumber", displayPhoneNumberOfUser);
 //app.get("/users/count", displayTotalUsers);
 app.get("/trips", displayUserTrip);
 app.post("/trips", addTrip );
+//app.post("/tripsround", addRoundTrip);
+//app.post('/login',logincheck);
+app.post("/addvalue", addUserVal);
+app.get("/getvalue",getUser);
+app.post("/login",loginconnect);
+
 
 const PORT =5000
 app.listen({port:PORT},async()=>{

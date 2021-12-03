@@ -11,16 +11,33 @@ var addTrip = async (req,resp) =>{
     To_location:req.body.tloc,
     Date:req.body.dte
 }
-
     try{
-    const addingtrip = await Trip.create({details});
+    const addingtrip = await Trip.create(details);
     return resp.status(300).json(addingtrip);
     }catch(e){
         console.log(e);
         return resp.status(600).json({"message from db": e});
     }
 }
-
+/*
+var addRoundTrip = async (req,resp) =>{
+    // const {CarId,From_location,To_location,Date} = req.body;
+ 
+   let details={
+     From_location:req.body.floc,
+     //To_location:req.body.tloc,
+     Date:req.body.dte
+ }
+ 
+     try{
+     const addingtrip = await Trip.create({details});
+     return resp.status(300).json(addingtrip);
+     }catch(e){
+         console.log(e);
+         return resp.status(600).json({"message from db": e});
+     }
+ }
+*/
 var displayUserTrip = async (req,resp) =>{
     try{
         const world = await Trip.findAll();
