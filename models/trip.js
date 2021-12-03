@@ -15,37 +15,35 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Trip.init({
-    TripNo: {
-      type:DataTypes.UUID,
-      primaryKey:true,
-      defaultValue:DataTypes.UUIDV4,
-    },
-    CarId:{
-      type:DataTypes.INTEGER,
-      foreignKey:true,
-      allowNull:false,
-    },
-    From_location:{ 
-      type:DataTypes.STRING,
-      allowNull:false,
-    },
-    To_location:{
-    type:DataTypes.STRING,
-    allowNull:false,
-    },
-    Date:{
-      type:DataTypes.DATEONLY,
-      allowNull:false,
-      defaultValue: sequelize.NOW
-   // type: sequelize.DATEONLY,
-   //allowNull: false,
-   //defaultValue: sequelize.NOW
-   //type: DataTypes.DATE,
-   //allowNull: false,
-  // defaultValue: Sequelize.NOW
+  TripNo: {
+  type:DataTypes.INTEGER,
+  autoIncrement: true,
+  primaryKey:true,
+  allowNull:false 
+  },
+From_location:{
+type:DataTypes.STRING,
+allowNull:false,
+},
+To_location:{
+type:DataTypes.STRING,
+allowNull:true,
+},
+Date:{
+type:DataTypes.DATEONLY,
+allowNull:false,
+defaultValue: sequelize.NOW
+},
 
-   
-    },
+createdAt: {
+  allowNull: false,
+  type: DataTypes.DATE
+},
+updatedAt: {
+  allowNull: false,
+  type: DataTypes.DATE
+}
+
   }, {
     sequelize,
     modelName: 'Trip',

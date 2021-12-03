@@ -18,12 +18,12 @@ app.get("/users/:userid/phonenumber", displayPhoneNumberOfUser);
 app.get("/trips", displayUserTrip);
 app.post("/trips", addTrip );
 
-const PORT =5003
+const PORT =5000
 app.listen({port:PORT},async()=>{
     console.log(`Server started at ${PORT}`)
     try{
         await sequelize.authenticate();
-        await sequelize.sync({alter:true});
+        await sequelize.sync({force:true});
         console.log("Connected");
     }catch(e){
         console.log(e);

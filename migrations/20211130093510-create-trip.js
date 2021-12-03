@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Trip', {
-      id: {
+      /*id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -22,6 +22,25 @@ module.exports = {
       },
       Date: {
         type: Sequelize.DATE
+      },*/
+
+      TripNo: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+       primaryKey:true,
+       allowNull:false
+      },
+      From_location: {
+        type: Sequelize.STRING,
+        allowNull:false,
+      },
+      To_location: {
+        type: Sequelize.STRING,
+        allowNull:true,
+      },
+      Date: {
+        type: Sequelize.DATE,
+        allowNull:false,
       },
       createdAt: {
         allowNull: false,
