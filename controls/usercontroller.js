@@ -3,11 +3,6 @@ const {Op, QueryTypes} = require("sequelize");
 const db = require("../models");
 const user = require("../models/user");
 
-var praveen=[
-    {
-        "email":"abc" , "password":"123"
-    }
-]
 
 //function to add new user
 var addUser = async(req,resp) =>{

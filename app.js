@@ -1,7 +1,7 @@
 const express= require("express");
 const {sequelize}=require("./models")
 const {addUser,displayUser,displayUserbyId,displayPhoneNumberOfUser,displayTotalUsers,sqlQuery} = require("./controls/usercontroller");
-const {addTrip,displayUserTrip} = require("./controls/tripcontroller");
+const {addTrip,displayUserTrip,addTripRound} = require("./controls/tripcontroller");
 const {addUserVal,getUser,loginconnect} = require("./controls/registercontroller");
 const app= express();
 
@@ -19,6 +19,7 @@ app.get("/users/:userid/phonenumber", displayPhoneNumberOfUser);
 //app.get("/users/count", displayTotalUsers);
 app.get("/trips", displayUserTrip);
 app.post("/trips", addTrip );
+app.post("/tripsrounds",addTripRound);
 //app.post("/tripsround", addRoundTrip);
 //app.post('/login',logincheck);
 app.post("/addvalue", addUserVal);
@@ -26,7 +27,7 @@ app.get("/getvalue",getUser);
 app.post("/login",loginconnect);
 
 
-const PORT =5000
+const PORT =5001
 app.listen({port:PORT},async()=>{
     console.log(`Server started at ${PORT}`)
     try{
