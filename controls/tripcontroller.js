@@ -13,7 +13,7 @@ var addTrip = async (req,resp) =>{
 }
     try{
     const addingtrip = await Trip.create(details);
-    return resp.status(300).json(addingtrip);
+    return resp.status(200).json(addingtrip);
     }catch(e){
         console.log(e);
         return resp.status(600).json({"message from db": e});
@@ -28,7 +28,7 @@ var addTripRound = async (req,resp) =>{
  }
      try{
      const addingtrip = await Trip.create(details);
-     return resp.status(300).json(addingtrip);
+     return resp.status(200).json(addingtrip);
      }catch(e){
          console.log(e);
          return resp.status(600).json({"message from db": e});

@@ -32,7 +32,7 @@ app.listen({port:PORT},async()=>{
     console.log(`Server started at ${PORT}`)
     try{
         await sequelize.authenticate();
-        await sequelize.sync({force:true});
+        await sequelize.sync({force:false});
         console.log("Connected");
     }catch(e){
         console.log(e);
