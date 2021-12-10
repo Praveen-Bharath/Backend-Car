@@ -14,12 +14,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Booking.init({
-    userId: DataTypes.UUID,
+    userId: {
+      type:DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey:true,
+      allowNull:false 
+      },
     CarId: DataTypes.INTEGER,
     Payment_Id: DataTypes.INTEGER,
-    To_location: DataTypes.STRING,
-    From_location: DataTypes.STRING,
-    Date: DataTypes.DATE,
+    To_location: {
+      type:DataTypes.STRING,
+      allowNull:true,
+    },
+    From_location:
+    {type:DataTypes.STRING,
+      allowNull:false,
+    },
+    Date: {
+      type:DataTypes.DATEONLY,
+      allowNull:false,
+      defaultValue: sequelize.NOW
+      },
     Payment_status: DataTypes.STRING
   }, {
     sequelize,

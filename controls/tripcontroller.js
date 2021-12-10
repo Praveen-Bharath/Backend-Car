@@ -1,7 +1,7 @@
 /*const {User,Trip, Sequelize} = require ("../models");
 const {Op, QueryTypes} = require("sequelize");
 const db = require("../models");*/
-const {Trip} = require ("../models");
+const {Booking} = require ("../models");
 
 var addTrip = async (req,resp) =>{
    // const {CarId,From_location,To_location,Date} = req.body;
@@ -9,10 +9,11 @@ var addTrip = async (req,resp) =>{
   let details={
     From_location:req.body.floc,
     To_location:req.body.tloc,
-    Date:req.body.dte
+    Date:req.body.dte,
+    UserId:req.body.UserId
 }
     try{
-    const addingtrip = await Trip.create(details);
+    const addingtrip = await Booking.create(details);
     return resp.status(200).json(addingtrip);
     }catch(e){
         console.log(e);
@@ -27,7 +28,7 @@ var addTripRound = async (req,resp) =>{
      Date:req.body.dte
  }
      try{
-     const addingtrip = await Trip.create(details);
+     const addingtrip = await Booking.create(details);
      return resp.status(200).json(addingtrip);
      }catch(e){
          console.log(e);
@@ -37,7 +38,7 @@ var addTripRound = async (req,resp) =>{
 
 var displayUserTrip = async (req,resp) =>{
     try{
-        const world = await Trip.findAll();
+        const world = await Booking.findAll();
         return resp.status(200).json(world);
     }
     catch(e){
